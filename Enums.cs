@@ -26,7 +26,6 @@
     enum Locked
     {
         LOCKED,
-        MULTIPLE,
         UNLOCKED,
         BARRED,
     };
@@ -36,7 +35,6 @@
         INTEGRATED,
         PADLOCK,
         BAR,
-        CHAIN,
         CLUTTER
     };
 }
