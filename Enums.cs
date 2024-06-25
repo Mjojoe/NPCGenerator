@@ -1,40 +1,56 @@
 ﻿namespace DoorGenerator
 {
-   enum Oppenness
+    internal class Enums
     {
+        public enum OPENNESS
+        {
         OPEN,
         CLOSE,
         LEANED
-    }
-    enum Material
-    {
+        }
+        public enum MATERIAL
+        {
         WOOD,
         STONE,
         METAL,
         GLASS,
-        FABRIC
-    };
+        FABRIC,
+        PAPER
+        };
 
-    enum Construction
-    {
+        public enum CONSTRUCTION
+        {
         SOLID,
         DECREPID,
         BARS,
         WINDOWED
-    };
+        };
 
-    enum Locked
-    {
+        public enum LOCKED
+        {
         LOCKED,
         UNLOCKED,
         BARRED,
-    };
+        };
 
-    enum Locktype
-    {
+        public enum LOCKTYPE
+        {
         INTEGRATED,
-        PADLOCK,
+        CHAIN,
+        PADLOCK
+        };
+
+        public enum BARREDTYPE
+        {
         BAR,
         CLUTTER
-    };
+        }
+
+        public static Array getOpenArray()
+        {
+            return Enum.GetValues(typeof(OPENNESS));
+        }
+
+
+    }
 }
