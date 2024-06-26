@@ -17,40 +17,24 @@
         FABRIC,
         PAPER
         };
-
         public enum CONSTRUCTION
         {
         SOLID,
         DECREPID,
-        BARS,
+        LATTICED,
         WINDOWED
         };
-
-        public enum LOCKED
-        {
-        LOCKED,
-        UNLOCKED,
-        BARRED,
-        };
-
         public enum LOCKTYPE
         {
         INTEGRATED,
         CHAIN,
-        PADLOCK
+        PADLOCK,
+        BARRICADE
         };
-
-        public enum BARREDTYPE
+        public enum BARRICADETYPE
         {
-        BAR,
+        PLANK,
         CLUTTER
         }
-
-        public static Array getOpenArray()
-        {
-            return Enum.GetValues(typeof(OPENNESS));
-        }
-
-
     }
 }

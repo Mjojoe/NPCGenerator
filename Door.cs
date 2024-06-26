@@ -55,7 +55,7 @@ namespace DoorGenerator
             Construction = (Enums.CONSTRUCTION)values.GetValue(random.Next(values.Length));
             if (Material == Enums.MATERIAL.GLASS || Material == Enums.MATERIAL.FABRIC)
             {
-                if (Construction == Enums.CONSTRUCTION.BARS || Construction == Enums.CONSTRUCTION.WINDOWED)
+                if (Construction == Enums.CONSTRUCTION.BAR || Construction == Enums.CONSTRUCTION.WINDOWED)
                 {
                     Construction = Enums.CONSTRUCTION.DECREPID;
                 }
