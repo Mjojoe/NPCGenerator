@@ -1,16 +1,15 @@
-﻿using System;
+﻿using DoorGenerator.Locks;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DoorGenerator.Locks;
 using static DoorGenerator.Enums;
 
 namespace DoorGenerator.Doors
 {
-    internal class Wooden_Door : Base_Door
-    {
-        public Wooden_Door()
+    internal class Metal_Door : Base_Door
+    { public Metal_Door()
         {
             Locks = new List<Lock>();
             GenerateOpenness();
@@ -23,7 +22,7 @@ namespace DoorGenerator.Doors
         }
         public new void PrintDoor()
         {
-            Console.WriteLine(Construction.ToString() + "Wooden Door");
+            Console.WriteLine(Construction.ToString() + "Metal Door");
             Console.WriteLine(Construction.ToString());
             Console.WriteLine(Openness.ToString());
             Console.WriteLine("With" + Locks.Count + "Locks:");

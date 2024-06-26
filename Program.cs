@@ -2,6 +2,8 @@
 
 using DoorGenerator;
 using static DoorGenerator.Enums;
+using DoorGenerator.Doors;
+using DoorGenerator.Locks;
 
 internal class Program
 {
@@ -10,20 +12,28 @@ internal class Program
         Console.WriteLine("Door Generator");
         Console.WriteLine("How many doors to generate?");
         int NumofDoors = Convert.ToInt32(Console.ReadLine());
-        List<Door> Doors = new List<Door>();
+        List<IDoor> Doors = new List<IDoor>();
 
         for (int i = 0; i < NumofDoors; i++)
         {
-            Door door = new Door();
-            Console.WriteLine("Set state of Openness? [y/n]:");
-            MainLoopFunctions.getInput(door, OPENNESS.GetType());
+
+            if(false)
+            {
+
+            }
+            else
+            {
+
+            }
 
 
 
         }
-        foreach (Door door in Doors)
+        foreach (IDoor door in Doors)
         {
-            door.printDoor();
+            Console.WriteLine("These Doors have been created:");
+            door.PrintDoor();
+            Console.WriteLine("----------------------------------------");
         }
     }
 }

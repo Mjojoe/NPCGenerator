@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DoorGenerator;
 
 namespace DoorGenerator.Locks
 {
@@ -25,13 +26,12 @@ namespace DoorGenerator.Locks
         }
         void GenerateBarricadeTypeForBarricade()
         {
-            Random random = new Random();
-            switch (random.Next(2))
+            switch (Enums.GetRandomBarricadeType())
             {
-                case 0:
+                case Enums.BARRICADETYPE.PLANK:
                     BarricadeType = Enums.BARRICADETYPE.PLANK;
                     GenerateIfLockIsLocked(); break;
-                case 1:
+                case Enums.BARRICADETYPE.CLUTTER:
                     BarricadeType = Enums.BARRICADETYPE.CLUTTER; break;
                 default:
                     throw new ArgumentException("Beats me what happened ¯\\_(ツ)_/¯");
