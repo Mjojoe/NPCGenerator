@@ -15,14 +15,27 @@ namespace DoorGenerator.Locks
             IsLocked = true;
             GenerateBarricadeTypeForBarricade();
         }
-        public Barricade(Enums.BARRICADETYPE barricadeType)
+        public Barricade(Enums.BARRICADETYPE barricadeType, bool locked)
         {
             BarricadeType = barricadeType;
+            IsLocked = locked;
         }
 
-        public new void PrintLock()
+        public override void PrintLock()
         {
-            Console.WriteLine("The Barricade is made with "+ BarricadeType.ToString());
+            Console.WriteLine("Barricaded with "+ BarricadeType.ToString());
+            if(BarricadeType == Enums.BARRICADETYPE.PLANK)
+            {
+                if(IsLocked)
+                {
+                    Console.WriteLine("The Plank is not fastend.");
+                }
+                else
+                {
+                    Console.WriteLine("The Plank is fastend");
+                }
+                
+            }
         }
         void GenerateBarricadeTypeForBarricade()
         {

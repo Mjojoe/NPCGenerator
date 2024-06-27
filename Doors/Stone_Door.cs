@@ -21,9 +21,9 @@ namespace DoorGenerator.Doors
                 GenerateLock();
             }
         }
-        public new void PrintDoor()
+        public override void PrintDoor()
         {
-            Console.WriteLine(Construction.ToString() + "Stone Door");
+            Console.WriteLine(Construction.ToString() + " Stone Door");
             Console.WriteLine(Construction.ToString());
             Console.WriteLine(Openness.ToString());
             Console.WriteLine("With" + Locks.Count + "Locks:");
@@ -32,7 +32,7 @@ namespace DoorGenerator.Doors
                 @lock.PrintLock();
             }
         }
-        new void GenerateConstruction()
+        internal override void GenerateConstruction()
         {
             Construction = GetRandomConstruction();
             if(Construction == CONSTRUCTION.LATTICED) { Construction = CONSTRUCTION.SOLID; }

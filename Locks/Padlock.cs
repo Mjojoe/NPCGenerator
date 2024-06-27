@@ -12,5 +12,20 @@ namespace DoorGenerator.Locks
         {
             GenerateIfLockIsLocked();
         }
+        public Padlock(bool locked)
+        {
+            IsLocked = locked;
+        }
+        public override void PrintLock()
+        {
+            if (IsLocked)
+            {
+                Console.WriteLine("Locked  Padlock");
+            }
+            else
+            {
+                Console.WriteLine("Unlocked Padlock");
+            }
+        }
     }
 }

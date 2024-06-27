@@ -9,8 +9,22 @@ namespace DoorGenerator.Locks
     internal class Lock
     {
         public bool IsLocked { get; set; }
-        public void PrintLock() { }
-        internal void GenerateIfLockIsLocked()
+        public Lock() 
+        {
+            GenerateIfLockIsLocked();
+        }
+        public virtual void PrintLock() 
+        {
+            if (IsLocked)
+            {
+                Console.WriteLine("Locked Lock");
+            }
+            else
+            {
+                Console.WriteLine("Unlocked Lock");
+            }
+        }
+        protected virtual void GenerateIfLockIsLocked()
         {
             Random random = new Random();
             switch (random.Next(2))

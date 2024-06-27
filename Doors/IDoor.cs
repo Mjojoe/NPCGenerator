@@ -9,9 +9,9 @@ namespace DoorGenerator.Doors
 {
     internal interface IDoor
     {
-        Enums.OPENNESS Openness { get; }
-        Enums.CONSTRUCTION Construction { get; }
-        List<Lock> Locks { get; }
+        public Enums.OPENNESS Openness { get; }
+        public Enums.CONSTRUCTION Construction { get; }
+        public List<Lock> Locks { get; }
         public void PrintDoor();
     }
 }

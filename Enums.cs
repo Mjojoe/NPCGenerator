@@ -8,7 +8,7 @@ namespace DoorGenerator
         {
         OPEN,
         CLOSE,
-        LEANED
+        HALFOPEN
         }
         public enum MATERIAL
         {
@@ -45,7 +45,7 @@ namespace DoorGenerator
             Random random = new Random();
             return (OPENNESS)values.GetValue(random.Next(values.Length));
         }
-        public MATERIAL GetRandomMaterial()
+        public static MATERIAL GetRandomMaterial()
         {
             Array values = Enum.GetValues(typeof(MATERIAL));
             Random random = new Random();

@@ -15,27 +15,43 @@ namespace DoorGenerator.Doors
         public Enums.CONSTRUCTION Construction { get; set; }
 
         public List<Lock> Locks { get; set; }
-        public void PrintDoor() { }
-        protected void GenerateOpenness()
+        public  Base_Door()
+        {
+            Locks = new List<Lock>();
+            GenerateOpenness();
+            GenerateConstruction();
+            GenerateLock();
+        }
+        public virtual void PrintDoor() 
+        {
+            Console.WriteLine(Construction.ToString() + " Door");
+            Console.WriteLine(Openness.ToString());
+            Console.WriteLine("With " + Locks.Count + " Locks:");
+            foreach (Lock @lock in Locks)
+            {
+                @lock.PrintLock();
+            }
+        }
+        internal virtual void GenerateOpenness()
         {
             Openness = GetRandomOpenness();
         }
-        protected void GenerateConstruction()
+        internal virtual void GenerateConstruction()
         {
             Construction = GetRandomConstruction();
         }
-        protected void AddLockToLocks(Lock @lock)
+        internal virtual void AddLockToLocks(Lock @lock)
         {
-            if (Locks.Count > 3)
+            if (Locks.Count >= 3)
             {
-                throw new ArithmeticException("Too many damn Locks!");
+                Console.WriteLine("Too many damn Locks!");
             }
             else
             {
                 Locks.Add(@lock);
             }
         }
-        protected void GenerateLock()
+        protected virtual void GenerateLock()
         {
             switch (GetRandomLocktype())
             {

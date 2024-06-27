@@ -21,9 +21,9 @@ namespace DoorGenerator.Doors
                 GenerateLock();
             }
         }
-        new public void PrintDoor()
+        override public void PrintDoor()
         {
-            Console.WriteLine(Construction.ToString() + "Glass Door");
+            Console.WriteLine(Construction.ToString() + " Glass Door");
             Console.WriteLine(Construction.ToString());
             Console.WriteLine(Openness.ToString());
             Console.WriteLine("With" + Locks.Count + "Locks:");
@@ -32,7 +32,7 @@ namespace DoorGenerator.Doors
                 @lock.PrintLock();
             }
         }
-        new void GenerateConstruction()
+        internal override void GenerateConstruction()
         {
             Construction = GetRandomConstruction();
             if(Construction == CONSTRUCTION.LATTICED || Construction == CONSTRUCTION.WINDOWED)
@@ -40,7 +40,7 @@ namespace DoorGenerator.Doors
                 Construction = CONSTRUCTION.DECREPID;
             }
         }
-        new void GenerateLock()
+        protected override void GenerateLock()
         {
             switch (GetRandomLocktype())
             {

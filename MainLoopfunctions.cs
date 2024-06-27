@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using static DoorGenerator.Enums;
 using DoorGenerator.Doors;
+using DoorGenerator.Locks;
 
 namespace DoorGenerator
 {
@@ -14,35 +15,120 @@ namespace DoorGenerator
                 Console.WriteLine(e.ToString());
             }
         }
-        public static void setOption()
+        public static Base_Door SetMaterial()
         {
-            
+            Console.WriteLine("Select Material or skip:");
+            PrintEnum(Enum.GetValues(typeof(MATERIAL)));
+            switch(Console.ReadLine().ToLower()) 
+            {
+                case "wood":
+                    return new Wooden_Door();
+                case "stone":
+                    return new Stone_Door();
+                case "metal":
+                    return new Metal_Door();
+                case "glass":
+                    return new Glass_Door();
+                case "fabric":
+                    return new Fabric_Door();
+                case "paper":
+                    return new Paper_Door();
+                default:
+                    Console.WriteLine("Adding Random Door");
+                    return GenerateNewDoor();
+            }
         }
-        public static void generateOption()
+        public static void SetConstruction(Base_Door door)
         {
-            
+            Console.WriteLine("Select Construction or skip:");
+            PrintEnum(Enum.GetValues(typeof(CONSTRUCTION)));
+            switch (Console.ReadLine().ToLower())
+            {
+                case "solid" :
+                    door.Construction = CONSTRUCTION.SOLID; break;
+                case "decrepid":
+                    door.Construction = CONSTRUCTION.DECREPID; break;
+                case "latticed":
+                    door.Construction = CONSTRUCTION.LATTICED; break;
+                case "windowed":
+                    door.Construction = CONSTRUCTION.WINDOWED; break;
+                default:
+                    Console.WriteLine("Selecting at random");
+                    door.GenerateConstruction();
+                    break;
+            }
         }
-        public static void SetOpeness()
+        public static void SetOpeness(Base_Door door)
         {
-            
+            Console.WriteLine("Select Openness or skip:");
+            PrintEnum(Enum.GetValues(typeof(OPENNESS)));
+            switch (Console.ReadLine().ToLower())
+            {
+                case "open":
+                    door.Openness = OPENNESS.OPEN; break;
+                case "closed":
+                    door.Openness = OPENNESS.CLOSE; break;
+                case "halfopen":
+                    door.Openness = OPENNESS.HALFOPEN; break;
+                default:
+                    Console.WriteLine("Selecting at random");
+                    door.GenerateConstruction();
+                    break;
+            }
         }
-        public static void SetMaterial()
+        public static void SetLock(Base_Door door)
         {
-            
+            Console.WriteLine("Select Locktype or skip:");
+            PrintEnum(Enum.GetValues(typeof(LOCKTYPE)));
+            switch (Console.ReadLine().ToLower())
+            {
+                case "integrated":
+                    door.AddLockToLocks(new Integrated_Lock(SetLocked())); break;
+                case "chain":
+                    door.AddLockToLocks(new Chain_Lock(SetLocked())); break;
+                case "padlock":
+                    door.AddLockToLocks(new Padlock(SetLocked())); break;
+                case "barricade":
+                    door.AddLockToLocks(new Barricade(SetBarricadeType(), SetLocked())); break;
+                default:
+                    Console.WriteLine("Selecting at random");
+                    door.GenerateConstruction();
+                    break;
+            }
         }
+        public static bool SetLocked()
+        {
+            Console.WriteLine("Locked or Unlocked or skip?");
+            switch (Console.ReadLine().ToLower())
+            {
+                case "locked":
+                    return true;
+                case "unlocked":
+                    return false;
+                default:
+                    Console.WriteLine("Locking Door!");
+                    return true;
+            }
 
-        public static void SetConstruction()
-        {
-            
         }
-        public static void SetLock()
+        public static BARRICADETYPE SetBarricadeType()
         {
-            
+            Console.WriteLine("Select Barricadetype or skip:");
+            PrintEnum(Enum.GetValues(typeof(BARRICADETYPE)));
+            switch (Console.ReadLine().ToLower())
+            {
+                case "plank":
+                    return BARRICADETYPE.PLANK;
+                case "clutter":
+                    return BARRICADETYPE.CLUTTER;
+                default: 
+                    Console.WriteLine("Selecting Random");
+                    return GetRandomBarricadeType();
+            }
         }
         public static void getInput()
         {
-            string input = "";
-            input = Console.ReadLine().ToLower();
+            string input = Console.ReadLine().ToLower();
             if (input == "y")
             {
                 
@@ -52,29 +138,26 @@ namespace DoorGenerator
                
             }
         }
-        public static IDoor GenerateNewDoor()
+        public static Base_Door GenerateNewDoor()
         {
-            Array values = Enum.GetValues(typeof(Enums.MATERIAL));
-            Random random = new Random();
-            switch ((Enums.MATERIAL)values.GetValue(random.Next(values.Length)))
+            switch (GetRandomMaterial())
             {
                 case MATERIAL.WOOD:
                     return new Wooden_Door();
-                    break;
                 case MATERIAL.STONE: 
-
-                    break;
+                    return new Stone_Door();
                 case MATERIAL.METAL: 
-                    break;
+                    return new Metal_Door();
                 case MATERIAL.GLASS: 
-                    break;
+                    return new Glass_Door();
                 case MATERIAL.FABRIC: 
-                    break;
+                    return new Fabric_Door();
                 case MATERIAL.PAPER: 
-                    break;
+                    return new Paper_Door();
                 default:
-                    throw new ArgumentException("Beats me what happened ¯\\_(ツ)_/¯");
-                    break;
+                    Console.WriteLine("Beats me what happened ¯\\_(ツ)_/¯");
+                    Console.WriteLine("Adding Generic Door");
+                    return new Base_Door();
             }
         }
     }

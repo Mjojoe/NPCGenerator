@@ -20,9 +20,9 @@ namespace DoorGenerator.Doors
                 GenerateLock();
             }
         }
-        public new void PrintDoor()
+        public override void PrintDoor()
         {
-            Console.WriteLine(Construction.ToString() + "Metal Door");
+            Console.WriteLine(Construction.ToString() + " Metal Door");
             Console.WriteLine(Construction.ToString());
             Console.WriteLine(Openness.ToString());
             Console.WriteLine("With" + Locks.Count + "Locks:");

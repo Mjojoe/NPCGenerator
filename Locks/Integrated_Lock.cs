@@ -12,5 +12,20 @@ namespace DoorGenerator.Locks
         {
             GenerateIfLockIsLocked();
         }
+        public Integrated_Lock(bool locked)
+        {
+            IsLocked = locked;
+        }
+        public override void PrintLock()
+        {
+            if (IsLocked)
+            {
+                Console.WriteLine("Locked intergrated Lock");
+            }
+            else
+            {
+                Console.WriteLine("Unlocked integrated Lock");
+            }
+        }
     }
 }

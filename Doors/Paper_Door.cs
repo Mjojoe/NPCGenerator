@@ -8,32 +8,28 @@ using static DoorGenerator.Enums;
 
 namespace DoorGenerator.Doors
 {
-    internal class Fabric_Door : Base_Door
+    internal class Paper_Door : Base_Door
     {
-        public Fabric_Door()
+        public Paper_Door()
         {
             Locks = new List<Lock>();
             GenerateOpenness();
             GenerateConstruction();
             GenerateLock();
         }
-        override public void PrintDoor()
+        public override void PrintDoor()
         {
-            Console.WriteLine(Construction.ToString() + " Curtain");
+            Console.WriteLine(Construction.ToString() + " Paper Door");
             Console.WriteLine(Openness.ToString());
-            foreach(Lock @lock in Locks)
+            Console.WriteLine("With" + Locks.Count + "Locks:");
+            foreach (Lock @lock in Locks)
             {
                 @lock.PrintLock();
             }
         }
-        internal override void GenerateOpenness() 
-        {
-            Openness = GetRandomOpenness(); 
-            if(Openness == OPENNESS.HALFOPEN) { GenerateOpenness(); }
-        }
         internal override void GenerateConstruction()
         {
-            switch(GetRandomConstruction())
+            switch (GetRandomConstruction())
             {
                 case CONSTRUCTION.SOLID:
                     Construction = CONSTRUCTION.SOLID; break;
@@ -43,10 +39,6 @@ namespace DoorGenerator.Doors
                     GenerateConstruction();
                     break;
             }
-        }
-        protected override void GenerateLock()
-        {
-            Locks.Add(new NoLock());
         }
     }
 }
