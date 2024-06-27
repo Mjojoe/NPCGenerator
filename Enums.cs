@@ -1,4 +1,6 @@
-﻿namespace DoorGenerator
+﻿using static DoorGenerator.Enums;
+
+namespace DoorGenerator
 {
     internal class Enums
     {
@@ -6,7 +8,7 @@
         {
         OPEN,
         CLOSE,
-        LEANED
+        HALFOPEN
         }
         public enum MATERIAL
         {
@@ -17,40 +19,55 @@
         FABRIC,
         PAPER
         };
-
         public enum CONSTRUCTION
         {
         SOLID,
         DECREPID,
-        BARS,
+        LATTICED,
         WINDOWED
         };
-
-        public enum LOCKED
-        {
-        LOCKED,
-        UNLOCKED,
-        BARRED,
-        };
-
         public enum LOCKTYPE
         {
         INTEGRATED,
         CHAIN,
-        PADLOCK
+        PADLOCK,
+        BARRICADE
         };
-
-        public enum BARREDTYPE
+        public enum BARRICADETYPE
         {
-        BAR,
+        PLANK,
         CLUTTER
         }
 
-        public static Array getOpenArray()
+        public static OPENNESS GetRandomOpenness()
         {
-            return Enum.GetValues(typeof(OPENNESS));
+            Array values = Enum.GetValues(typeof(OPENNESS));
+            Random random = new Random();
+            return (OPENNESS)values.GetValue(random.Next(values.Length));
         }
-
-
+        public static MATERIAL GetRandomMaterial()
+        {
+            Array values = Enum.GetValues(typeof(MATERIAL));
+            Random random = new Random();
+            return (MATERIAL)values.GetValue(random.Next(values.Length));
+        }
+        public static CONSTRUCTION GetRandomConstruction()
+        {
+            Array values = Enum.GetValues(typeof(CONSTRUCTION));
+            Random random = new Random();
+            return (CONSTRUCTION)values.GetValue(random.Next(values.Length));
+        }
+        public static LOCKTYPE GetRandomLocktype()
+        {
+            Array values = Enum.GetValues(typeof(LOCKTYPE));
+            Random random = new Random();
+            return (LOCKTYPE)values.GetValue(random.Next(values.Length));
+        }
+        public static BARRICADETYPE GetRandomBarricadeType()
+        {
+            Array values = Enum.GetValues(typeof(BARRICADETYPE));
+            Random random = new Random();
+            return (BARRICADETYPE)values.GetValue(random.Next(values.Length));
+        }
     }
 }
