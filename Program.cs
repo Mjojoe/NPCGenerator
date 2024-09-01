@@ -42,4 +42,5 @@ foreach (IDoor door in Doors)
     Console.WriteLine("----------------------------------------");
     door.PrintDoor();
 }
+Console.Read();
 
