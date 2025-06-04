@@ -1,6 +1,5 @@
-﻿using DoorGenerator;
-using System.Diagnostics.CodeAnalysis;
-using static DoorGenerator.Enums;
+﻿using System.Diagnostics.CodeAnalysis;
+using static NPCGenerator.Enums.Traits;
 using DoorGenerator.Doors;
 using DoorGenerator.Locks;
 
@@ -15,7 +14,7 @@ namespace DoorGenerator
                 Console.WriteLine(e.ToString());
             }
         }
-        public static Base_Door SetMaterial()
+        public static Humanoid SetMaterial()
         {
             Console.WriteLine("Select Material or skip:");
             PrintEnum(Enum.GetValues(typeof(MATERIAL)));
@@ -38,7 +37,7 @@ namespace DoorGenerator
                     return GenerateNewDoor();
             }
         }
-        public static void SetConstruction(Base_Door door)
+        public static void SetConstruction(Humanoid door)
         {
             Console.WriteLine("Select Construction or skip:");
             PrintEnum(Enum.GetValues(typeof(CONSTRUCTION)));
@@ -58,7 +57,7 @@ namespace DoorGenerator
                     break;
             }
         }
-        public static void SetOpeness(Base_Door door)
+        public static void SetOpeness(Humanoid door)
         {
             Console.WriteLine("Select Openness or skip:");
             PrintEnum(Enum.GetValues(typeof(OPENNESS)));
@@ -76,7 +75,7 @@ namespace DoorGenerator
                     break;
             }
         }
-        public static void SetLock(Base_Door door)
+        public static void SetLock(Humanoid door)
         {
             Console.WriteLine("Select Locktype or skip:");
             PrintEnum(Enum.GetValues(typeof(LOCKTYPE)));
@@ -138,7 +137,7 @@ namespace DoorGenerator
                
             }
         }
-        public static Base_Door GenerateNewDoor()
+        public static Humanoid GenerateNewDoor()
         {
             switch (GetRandomMaterial())
             {
@@ -157,7 +156,7 @@ namespace DoorGenerator
                 default:
                     Console.WriteLine("Beats me what happened ¯\\_(ツ)_/¯");
                     Console.WriteLine("Adding Generic Door");
-                    return new Base_Door();
+                    return new Humanoid();
             }
         }
     }

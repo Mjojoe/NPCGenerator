@@ -6,7 +6,7 @@ using DoorGenerator.Doors;
 Console.WriteLine("Door Generator");
 Console.WriteLine("How many doors to generate?");
 int NumofDoors = Convert.ToInt32(Console.ReadLine());
-List<Base_Door> Doors = new();
+List<Humanoid> Doors = new();
 
 for (int i = 0; i < NumofDoors; i++)
 {
@@ -36,7 +36,7 @@ for (int i = 0; i < NumofDoors; i++)
     }
 }
 Console.WriteLine("These Doors have been created:");
-foreach (IDoor door in Doors)
+foreach (IHumanoid door in Doors)
 {
     
     Console.WriteLine("----------------------------------------");
