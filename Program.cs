@@ -1,46 +1,30 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using DoorGenerator;
-using DoorGenerator.Doors;
+using static NPCGenerator.npcs;
 
-Console.WriteLine("Door Generator");
-Console.WriteLine("How many doors to generate?");
-int NumofDoors = Convert.ToInt32(Console.ReadLine());
-List<Humanoid> Doors = new();
+bool testing = true;
+int NumOfInstances = 0;
+List<Humanoid> instances = new();
 
-for (int i = 0; i < NumofDoors; i++)
-{
-    int doorCount = i + 1;
-    Console.WriteLine("Do You want to specify Door #"+ doorCount +"? [y/n]");
-    string input = Console.ReadLine().ToLower();
+Console.WriteLine("NPC Generator");
 
-    if (input == "y")
-    {
-        Console.WriteLine("Lets get Started!");
-        Doors.Add(MainLoopFunctions.SetMaterial());
-        MainLoopFunctions.SetConstruction(Doors[i]);
-        MainLoopFunctions.SetOpeness(Doors[i]);
-        Console.WriteLine("How many Locks?");
-        int NumOfLocks = Convert.ToInt32(Console.ReadLine());
-        if (NumOfLocks > 4) { NumOfLocks = 4; }
-        for (int j = 0; j < NumOfLocks; j++)
-        {
-            MainLoopFunctions.SetLock(Doors[i]);
-        }
-
-    }
-    else
-    {
-        Console.WriteLine("Generating random Door ... ");
-        Doors.Add(MainLoopFunctions.GenerateNewDoor());
-    }
+if (testing == true) { NumOfInstances = 1; } 
+else {
+    Console.WriteLine("How many doors to generate?");
+    int NumofInstances = Convert.ToInt32(Console.ReadLine());
 }
-Console.WriteLine("These Doors have been created:");
-foreach (IHumanoid door in Doors)
+
+for (int i = 0; i < NumOfInstances; i++)
 {
-    
+    int Count = i + 1;
+    Console.WriteLine("Generating random Instance ... ");
+    Instances.Add(new Humanoid());
+}
+Console.WriteLine("These Instances have been generated:");
+foreach (ICharacter i in Instances)
+{
     Console.WriteLine("----------------------------------------");
-    door.PrintDoor();
+    i.PrintCharacter();
 }
 Console.Read();
 
