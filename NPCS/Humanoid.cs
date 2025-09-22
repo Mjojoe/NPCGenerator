@@ -34,21 +34,21 @@ namespace NPCGenerator.npcs
 
         public virtual void PrintCharacter()
         {
-            Console.WriteLine("Write a short, paragraph-long story about an NPC.");
+            Console.WriteLine("Write a short, paragraph-long background about an NPC.");
             Console.WriteLine("They're a " +
                SPIECIES.ToString() + " " + CLASS.ToString() +
-               " of " + HEIGHT.ToString() + ", " + WEIGHT.ToString() + " stature with " +
-               HAIRTEXTURE.ToString() + " " + HAIRCOLOR.ToString() + " hair and they live life as a " +
+               ", " + HEIGHT.ToString() + " and " + WEIGHT.ToString() + " with " +
+               HAIRTEXTURE.ToString() + " " + HAIRCOLOR.ToString() + " hair and they live as a " +
                WEALTH.ToString() + " " + PROFESSION.ToString() + ".");
 
         }
         public virtual string[] WriteCharacterToFile()
         {
             string[] lines = {
-               "Write a short, paragraph-long story about an NPC.",
+               "Write a short, paragraph-long background about an NPC.",
                "They're a " +
                SPIECIES.ToString() + " " + CLASS.ToString() +
-               ", " + HEIGHT.ToString() + "and " + WEIGHT.ToString() + " with " +
+               ", " + HEIGHT.ToString() + " and " + WEIGHT.ToString() + " with " +
                HAIRTEXTURE.ToString() + " " + HAIRCOLOR.ToString() + " hair and they live as a " +  
                WEALTH.ToString() + " " + PROFESSION.ToString() + ".",
                "--------------------------------------------"

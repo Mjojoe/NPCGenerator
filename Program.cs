@@ -3,7 +3,7 @@
 using NPCGenerator.npcs;
 
 bool testing = false;
-int NumOfInstances = 0;
+int NumOfInstances;
 List<ICharacter> Instances = new();
 string filename = "GeneratedNPCs.txt";
 
@@ -11,8 +11,7 @@ Console.WriteLine("NPC Generator");
 
 if (testing) { NumOfInstances = 5; } 
 else {
-    Console.WriteLine("How many Characters to generate?");
-    NumOfInstances = Convert.ToInt32(Console.ReadLine());
+    NumOfInstances = 9;
 }
 
 for (int i = 0; i < NumOfInstances; i++)

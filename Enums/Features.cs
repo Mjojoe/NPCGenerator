@@ -9,7 +9,7 @@ namespace NPCGenerator.Enums
         {
            TALL,
            SHORT,
-           AVERAGE
+           AVERAGE_HEIGHT
 
         }
         public enum WEIGHT
