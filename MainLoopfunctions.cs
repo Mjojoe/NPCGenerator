@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using static NPCGenerator.Enums.Traits;
-using static NPCGenerator.npcs;
+using static NPCGenerator.Enums.Randomizations;
+using NPCGenerator.npcs;
 
 namespace NPCGenerator
 {
@@ -16,17 +17,17 @@ namespace NPCGenerator
 
         public static Humanoid GenerateCharacter()
         {
-            switch (GetRandomMaterial())
+            switch (GetRandomSpiecies())
             {
-                case SPECIES.HUMAN:
+                case SPIECIES.HUMAN:
                     return new Humanoid(); 
-                case SPECIES.ELF:
+                case SPIECIES.ELF:
                     return new Humanoid();
-                case SPECIES.DWARF: 
+                case SPIECIES.DWARF: 
                     return new Humanoid();
-                case SPECIES.HALFELF: 
+                case SPIECIES.HALFELF: 
                     return new Humanoid();
-                case SPECIES.HALFORC: 
+                case SPIECIES.HALFORC: 
                     return new Humanoid();
                 default:
                     Console.WriteLine("Beats me what happened ¯\\_(ツ)_/¯");

@@ -5,11 +5,11 @@ namespace NPCGenerator.Enums
 {
     internal class Randomizations
     {
-        public static SPECIES GetRandomSpecies()
+        public static SPIECIES GetRandomSpiecies()
         {
-            Array values = Enum.GetValues(typeof(SPECIES));
+            Array values = Enum.GetValues(typeof(SPIECIES));
             Random random = new Random();
-            return (SPECIES)values.GetValue(random.Next(values.Length));
+            return (SPIECIES)values.GetValue(random.Next(values.Length));
         }
         public static CLASS GetRandomClass()
         {

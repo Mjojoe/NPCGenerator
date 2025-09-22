@@ -9,15 +9,15 @@ namespace NPCGenerator.Enums
         {
            TALL,
            SHORT,
-           AVARAGE
+           AVERAGE
 
         }
         public enum WEIGHT
         {
             VERY_HEAVY,
-            HEAVY,
-            AVARAGE,
-            HEALTHY,
+            OF_HEAVY_WEIGHT,
+            OF_AVARAGE_WEIGHT,
+            OF_HEALTHY_WEIGHT,
             SKINNY,
             VERY_SKINNY
         };
@@ -39,7 +39,7 @@ namespace NPCGenerator.Enums
             LONG,
             SHORT,
             CURLY,
-            NONE,
+            BALD,
         };
         public enum SKIN
         {
@@ -68,10 +68,10 @@ namespace NPCGenerator.Enums
         }
         public enum WEALTH
         {
-            RICH,
+            WEALTHY,
             POOR,
-            LOADED,
-            REGULAR,
+            ARISTOCRATIC,
+            MODEST,
             DESTITUTE
         }
     }

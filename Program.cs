@@ -1,30 +1,52 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using static NPCGenerator.npcs;
+using NPCGenerator.npcs;
 
-bool testing = true;
+bool testing = false;
 int NumOfInstances = 0;
-List<Humanoid> instances = new();
+List<ICharacter> Instances = new();
+string filename = "GeneratedNPCs.txt";
 
 Console.WriteLine("NPC Generator");
 
-if (testing == true) { NumOfInstances = 1; } 
+if (testing) { NumOfInstances = 5; } 
 else {
-    Console.WriteLine("How many doors to generate?");
-    int NumofInstances = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("How many Characters to generate?");
+    NumOfInstances = Convert.ToInt32(Console.ReadLine());
 }
 
 for (int i = 0; i < NumOfInstances; i++)
 {
-    int Count = i + 1;
-    Console.WriteLine("Generating random Instance ... ");
+    //Console.WriteLine("Generating random Instances ... ");
     Instances.Add(new Humanoid());
 }
-Console.WriteLine("These Instances have been generated:");
-foreach (ICharacter i in Instances)
-{
-    Console.WriteLine("----------------------------------------");
-    i.PrintCharacter();
+
+if (testing) {
+    Console.WriteLine("These Instances have been generated:");
+
+    foreach (ICharacter i in Instances)
+    {
+        Console.WriteLine("----------------------------------------");
+        i.PrintCharacter();
+    }
+} else {
+    string docPath =
+          Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+    using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, filename)))
+    {
+            outputFile.WriteLine(DateTime.Now.ToString());
+    }
+    foreach (ICharacter i in Instances)
+    {
+        string[] lines = i.WriteCharacterToFile();
+        using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, filename), true))
+        {
+            foreach (string line in lines)
+                outputFile.WriteLine(line);
+        }
+    }
+    Console.WriteLine("Print Complete!");
 }
+
 Console.Read();
 

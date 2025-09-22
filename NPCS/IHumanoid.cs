@@ -1,6 +1,6 @@
 ﻿using static NPCGenerator.Enums.Features;
 
-namespace DoorGenerator.npcs
+namespace NPCGenerator.npcs
 {
     internal interface IHumanoid : ICharacter
     {

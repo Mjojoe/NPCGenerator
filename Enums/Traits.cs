@@ -4,7 +4,7 @@ namespace NPCGenerator.Enums
 {
     internal class Traits
     {
-        public enum SPECIES
+        public enum SPIECIES
         {
            HUMAN,
            ELF,
@@ -17,8 +17,8 @@ namespace NPCGenerator.Enums
         }
         public enum CLASS
         {
-            NONE,
-            FIGHTE,
+            PEASANT,
+            FIGHTER,
             ROGUE,
             WIZARD,
             SORCERER,
@@ -32,9 +32,10 @@ namespace NPCGenerator.Enums
         };
         public enum PROFESSION
         {
-            NONE,
+            WAYFARER,
             BAKER,
-            SMITH,
+            BLACKSMITH,
+            GOLDSMITH,
             SHOPKEEPER,
             FARMER,
             TRADER,
