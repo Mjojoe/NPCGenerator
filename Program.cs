@@ -1,46 +1,52 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using DoorGenerator;
-using DoorGenerator.Doors;
+using NPCGenerator.npcs;
 
-Console.WriteLine("Door Generator");
-Console.WriteLine("How many doors to generate?");
-int NumofDoors = Convert.ToInt32(Console.ReadLine());
-List<Base_Door> Doors = new();
+bool testing = false;
+int NumOfInstances = 0;
+List<ICharacter> Instances = new();
+string filename = "GeneratedNPCs.txt";
 
-for (int i = 0; i < NumofDoors; i++)
+Console.WriteLine("NPC Generator");
+
+if (testing) { NumOfInstances = 5; } 
+else {
+    Console.WriteLine("How many Characters to generate?");
+    NumOfInstances = Convert.ToInt32(Console.ReadLine());
+}
+
+for (int i = 0; i < NumOfInstances; i++)
 {
-    int doorCount = i + 1;
-    Console.WriteLine("Do You want to specify Door #"+ doorCount +"? [y/n]");
-    string input = Console.ReadLine().ToLower();
+    //Console.WriteLine("Generating random Instances ... ");
+    Instances.Add(new Humanoid());
+}
 
-    if (input == "y")
+if (testing) {
+    Console.WriteLine("These Instances have been generated:");
+
+    foreach (ICharacter i in Instances)
     {
-        Console.WriteLine("Lets get Started!");
-        Doors.Add(MainLoopFunctions.SetMaterial());
-        MainLoopFunctions.SetConstruction(Doors[i]);
-        MainLoopFunctions.SetOpeness(Doors[i]);
-        Console.WriteLine("How many Locks?");
-        int NumOfLocks = Convert.ToInt32(Console.ReadLine());
-        if (NumOfLocks > 4) { NumOfLocks = 4; }
-        for (int j = 0; j < NumOfLocks; j++)
+        Console.WriteLine("----------------------------------------");
+        i.PrintCharacter();
+    }
+} else {
+    string docPath =
+          Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+    using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, filename)))
+    {
+            outputFile.WriteLine(DateTime.Now.ToString());
+    }
+    foreach (ICharacter i in Instances)
+    {
+        string[] lines = i.WriteCharacterToFile();
+        using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, filename), true))
         {
-            MainLoopFunctions.SetLock(Doors[i]);
+            foreach (string line in lines)
+                outputFile.WriteLine(line);
         }
+    }
+    Console.WriteLine("Print Complete!");
+}
 
-    }
-    else
-    {
-        Console.WriteLine("Generating random Door ... ");
-        Doors.Add(MainLoopFunctions.GenerateNewDoor());
-    }
-}
-Console.WriteLine("These Doors have been created:");
-foreach (IDoor door in Doors)
-{
-    
-    Console.WriteLine("----------------------------------------");
-    door.PrintDoor();
-}
 Console.Read();
 
